@@ -25,7 +25,6 @@ private int point=0;
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,6 +35,7 @@ private int point=0;
         this1 = view.findViewById(R.id.this1);
         this0.setOnClickListener(this);
         this1.setOnClickListener(this);
+        imageView.setImageResource(R.drawable.mozg);
 
 
         testQuestion();
@@ -58,27 +58,34 @@ private int point=0;
             this1.setText("Прибавить единичку");
         }
         if (point==3){
-            question.setText("ти довн)00");
-            this0.setVisibility(View.INVISIBLE);
-            this1.setVisibility(View.INVISIBLE);
-            imageView.setImageResource(R.id.mozg);
+
+            question.setText("Счет: "+value+"/3"+"\nти довн)00");
+            this0.setText("Вернуться в главное меню");
+            this1.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.this1:
+            case R.id.this0:
+                if (point==3){
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new  MainFragment())
+                            .commit();
+                }else {
+                    point++;
+                    testQuestion();
+                }
+                break;
+
+                case R.id.this1:
                 point++;
                 value++;
                 testQuestion();
-
                 break;
 
-            case R.id.this0:
-                point++;
-                testQuestion();
-                break;
         }
     }
 }
