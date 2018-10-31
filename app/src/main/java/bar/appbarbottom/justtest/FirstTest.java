@@ -102,6 +102,7 @@ public class FirstTest extends Fragment implements View.OnClickListener {
             this2.setVisibility(View.GONE);
             this3.setVisibility(View.GONE);
             this4.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
         }
     }
 

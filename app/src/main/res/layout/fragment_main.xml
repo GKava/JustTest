@@ -9,17 +9,18 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        style="PrimaryFlatButton"
         android:id="@+id/test1"
+        style="PrimaryFlatButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="52dp"
         android:text="ТЕСТ ПО МЕМОЗНАНИЮ \n ОКТЯБРЬ 2018"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,10 +102,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/test2" />
+        app:layout_constraintTop_toBottomOf="@+id/randomTest" />
 
     <Button
-        android:id="@+id/test2"
+        android:id="@+id/randomTest"
         style="PrimaryFlatButton"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -113,9 +114,21 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="ТЕСТ"
+        android:text="random"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test1" />
+
+    <TextView
+        android:textSize="23sp"
+        android:id="@+id/txtCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Coins"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
