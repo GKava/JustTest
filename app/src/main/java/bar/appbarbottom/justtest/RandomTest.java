@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.gms.ads.InterstitialAd;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -80,15 +82,18 @@ public class RandomTest extends Fragment implements View.OnClickListener{
             imageView.setImageResource(R.drawable.mozg);
 
              Random random = new Random();
-             f0=random.nextInt(7);
-             f1=random.nextInt(7);
-             f2=random.nextInt(7);
-             f3=random.nextInt(7);
-             f4=random.nextInt(7);
+             int collSize = allQuestions.size();
+             Collections.shuffle(allQuestions);
+             f0=0;
+             f1=1;
+             f2=2;
+             f3=3;
+             f4=4;
 
             testQuestion();
             return view;
     }
+
     public void checkWinners(int answer){
                 if (point==0 & allQuestions.get(f0).getWinInt()==answer ){
                     value++;
@@ -107,6 +112,7 @@ public class RandomTest extends Fragment implements View.OnClickListener{
                 }
 
     }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -200,7 +206,6 @@ public class RandomTest extends Fragment implements View.OnClickListener{
                 rating = "шаришь";
                 coins=coins+5;
             }
-
             question.setText("Счет: "+value+"/5"+"\n"+ rating);
             this1.setText("Вернуться в главное меню");
             this2.setVisibility(View.GONE);
@@ -209,5 +214,4 @@ public class RandomTest extends Fragment implements View.OnClickListener{
             imageView.setVisibility(View.VISIBLE);
         }
     }
-
 }

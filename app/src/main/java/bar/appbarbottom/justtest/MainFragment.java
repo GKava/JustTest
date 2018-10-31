@@ -43,7 +43,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
             coins = mSettings.getInt(APP_PREFERENCES_COINS, 0);
         }
         String coinsString = String.valueOf(coins);
-        txtCoins.setText(coinsString);
+        txtCoins.setText(" "+coinsString + " memcoins");
     }
 
     @Override

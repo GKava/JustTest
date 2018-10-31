@@ -88,7 +88,6 @@ public class FirstTest extends Fragment implements View.OnClickListener {
 
     }
 
-
     public void testQuestion(int intPoint){
             question.setText(allQuestions.get(intPoint).getQuestionsName());
             this1.setText(allQuestions.get(intPoint).getThis1());

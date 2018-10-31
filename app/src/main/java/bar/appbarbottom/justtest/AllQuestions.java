@@ -92,12 +92,11 @@ public class AllQuestions {
     itemQuestions.add(new AllQuestions("Кто основал Питер ?","Путин","Петр I ","Шрек","Сталин",3));
     itemQuestions.add(new AllQuestions("Сколько уважающая себя девушка пьет на вписке ? ","Немного","Чуть-чуть","Стаканчик","На донышке",4));
     itemQuestions.add(new AllQuestions("Кто такой мистер Дудец? ","Собака ","Крыса","Скелет ","Ютубер",3));
-//7-9
     itemQuestions.add(new AllQuestions("На какой вопрос ученые из до сих пор не нашли ответа ?","Есть ли жизнь на марсе ?","Существует ли бог ?","Чи да ?","В чем смысл жизни ?",3));
     itemQuestions.add(new AllQuestions("Что опаснее всего для монитора ?","Скачок напряжения","Моль","Вода","Пез**ки пришедшие в гости",2));
     itemQuestions.add(new AllQuestions("Кто  обокрал Фараона в октябре ?","Государств","Друзья","Школьник","Девушка",3));
 
-    itemQuestions.add(new AllQuestions("","","","","",1));
+    //itemQuestions.add(new AllQuestions("","","","","",1));
 
 
 
