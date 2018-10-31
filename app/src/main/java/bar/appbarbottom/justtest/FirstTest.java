@@ -9,11 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-
+import java.util.List;
+import java.util.Random;
+import static bar.appbarbottom.justtest.AllQuestions.getLastMonth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +27,8 @@ public class FirstTest extends Fragment implements View.OnClickListener {
     private int point=0;
     private InterstitialAd mInterstitialAd;
     private String rating;
+    List<AllQuestions> allQuestions = getLastMonth();
+
     public FirstTest() {
         // Required empty public constructor
     }
@@ -45,7 +48,8 @@ public class FirstTest extends Fragment implements View.OnClickListener {
         this3.setOnClickListener(this);
         this4.setOnClickListener(this);
         imageView.setImageResource(R.drawable.mozg);
-        testQuestion();
+
+        testQuestion(0);
 
         MobileAds.initialize(getActivity(),
                 "ca-app-pub-3940256099942544~3347511713");
@@ -62,28 +66,36 @@ public class FirstTest extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void testQuestion(){
-        if (point==0){
-            question.setText("На какой вопрос ученые из до сих пор не нашли ответа ?");
-            this1.setText("Есть ли жизнь на марсе ?");
-            this2.setText("Существует ли бог ?");
-            this3.setText("Чи да ?");
-            this4.setText("В чем смысл жизни ?");
+    // проверяем является ли ответ правильным, в параметрах передаем номер кнопки
+    // и сравниваем с WinInt из коллекции, если совпадает то ответ верный
+    public void checkWinners(int answer){
+        if (point==0 & allQuestions.get(0).getWinInt()==answer ){
+            value++;
         }
-        if (point==1){
-            question.setText("Что опаснее всего для монитора ?");
-            this1.setText("Скачок напряжения");
-            this2.setText("Моль");
-            this3.setText("Вода");
-            this4.setText("Пез**ки пришедшие в гости");
+        if (point==1 & allQuestions.get(1).getWinInt()==answer ){
+            value++;
         }
-        if (point==2){
-            question.setText("Кто  обокрал Фараона в октябре ?");
-            this1.setText("Государств");
-            this2.setText("Друзья");
-            this3.setText("Школьник");
-            this4.setText("Девушка");
+        if (point==2 & allQuestions.get(2).getWinInt()==answer ){
+            value++;
         }
+
+//        if (point==3 & allQuestions.get(3).getWinInt()==answer ){
+//            value++;
+//        }
+//        if (point==4 & allQuestions.get(4).getWinInt()==answer ){
+//            value++;
+//        }
+
+    }
+
+
+    public void testQuestion(int intPoint){
+            question.setText(allQuestions.get(intPoint).getQuestionsName());
+            this1.setText(allQuestions.get(intPoint).getThis1());
+            this2.setText(allQuestions.get(intPoint).getThis2());
+            this3.setText(allQuestions.get(intPoint).getThis3());
+            this4.setText(allQuestions.get(intPoint).getThis4());
+
         if (point==3){
             if (value==0){
                 rating = "просто ухади";
@@ -115,33 +127,28 @@ public class FirstTest extends Fragment implements View.OnClickListener {
                             .replace(R.id.fragment_container, new  MainFragment())
                             .commit();
                 }else {
+                    checkWinners(1);
                     point++;
-                    testQuestion();
+                    testQuestion(point);
                 }
                 break;
 
                 case R.id.this2:
-                    if (point==1){
-                        value++;
-                    }
+                    checkWinners(2);
                 point++;
-                testQuestion();
+                testQuestion(point);
                 break;
 
             case R.id.this3:
-                if (point==0 | point==2){
-                    value++;
-
-                }
+                checkWinners(3);
                 point++;
-                testQuestion();
+                testQuestion(point);
                 break;
 
             case R.id.this4:
-
-
+                checkWinners(4);
                 point++;
-                testQuestion();
+                testQuestion(point);
                 break;
         }
     }

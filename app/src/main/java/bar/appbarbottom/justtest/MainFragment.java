@@ -1,6 +1,8 @@
 package bar.appbarbottom.justtest;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,18 +17,40 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment implements View.OnClickListener{
-Button test1,randomTest;
-TextView txtCoins;
+    public static final String APP_PREFERENCES_COINS= "coins";
+    public static final String APP_PREFERENCES = "mysettings";
+    private SharedPreferences mSettings;
+    int coins;
+    Button test1,randomTest;
+    TextView txtCoins;
 
     public MainFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putInt(APP_PREFERENCES_COINS, coins);
+        editor.apply();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mSettings.contains(APP_PREFERENCES_COINS)) {
+            coins = mSettings.getInt(APP_PREFERENCES_COINS, 0);
+        }
+        String coinsString = String.valueOf(coins);
+        txtCoins.setText(coinsString);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_main, container, false);
+        mSettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         test1 = view.findViewById(R.id.test1);
         txtCoins = view.findViewById(R.id.txtCoins);
         randomTest = view.findViewById(R.id.randomTest);
@@ -35,7 +59,7 @@ TextView txtCoins;
         // Inflate the layout for this fragment
 
         Drawable img = getResources().getDrawable(R.drawable.ic_monetization_on_black_24dp);
-        img.setBounds(0, 0, 50, 50);
+        img.setBounds(0, 0, 100, 100);
         txtCoins.setCompoundDrawables(img, null, null, null);
         return view;
     }

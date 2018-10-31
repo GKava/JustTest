@@ -1,6 +1,8 @@
 package bar.appbarbottom.justtest;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -34,14 +36,37 @@ public class RandomTest extends Fragment implements View.OnClickListener{
     private  int f3;
     private  int f4;
     List<AllQuestions> allQuestions = getAllQuestions();
+
+    public static final String APP_PREFERENCES_COINS= "coins";
+    public static final String APP_PREFERENCES = "mysettings";
+    private SharedPreferences mSettings;
+    int coins;
+
     public RandomTest() {
 
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putInt(APP_PREFERENCES_COINS, coins);
+        editor.apply();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mSettings.contains(APP_PREFERENCES_COINS)) {
+            coins = mSettings.getInt(APP_PREFERENCES_COINS, 0);
+        }
+
+    }
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_random_test, container, false);
+            mSettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
             question = view.findViewById(R.id.question);
             imageView = view.findViewById(R.id.imageView);
             this1 = view.findViewById(R.id.this1);
@@ -64,24 +89,24 @@ public class RandomTest extends Fragment implements View.OnClickListener{
             testQuestion();
             return view;
     }
-public void checkWinners(int answer){
-            if (point==0 & allQuestions.get(f0).getWinInt()==answer ){
-                value++;
-            }
-            if (point==1 & allQuestions.get(f1).getWinInt()==answer ){
-                value++;
-            }
-            if (point==2 & allQuestions.get(f2).getWinInt()==answer ){
-                value++;
-            }
-            if (point==3 & allQuestions.get(f3).getWinInt()==answer ){
-                value++;
-            }
-            if (point==4 & allQuestions.get(f4).getWinInt()==answer ){
-                value++;
-            }
+    public void checkWinners(int answer){
+                if (point==0 & allQuestions.get(f0).getWinInt()==answer ){
+                    value++;
+                }
+                if (point==1 & allQuestions.get(f1).getWinInt()==answer ){
+                    value++;
+                }
+                if (point==2 & allQuestions.get(f2).getWinInt()==answer ){
+                    value++;
+                }
+                if (point==3 & allQuestions.get(f3).getWinInt()==answer ){
+                    value++;
+                }
+                if (point==4 & allQuestions.get(f4).getWinInt()==answer ){
+                    value++;
+                }
 
-}
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -165,12 +190,15 @@ public void checkWinners(int answer){
             }
             if (value==3){
                 rating = "побольше среднего";
+                coins=coins+3;
             }
             if (value==4){
                 rating = "ну так";
+                coins=coins+4;
             }
             if (value==5){
                 rating = "шаришь";
+                coins=coins+5;
             }
 
             question.setText("Счет: "+value+"/5"+"\n"+ rating);
@@ -178,6 +206,7 @@ public void checkWinners(int answer){
             this2.setVisibility(View.GONE);
             this3.setVisibility(View.GONE);
             this4.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
         }
     }
 
