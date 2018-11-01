@@ -23,6 +23,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     int coins;
     Button test1,randomTest;
     TextView txtCoins;
+    StartTest startTest = new StartTest();
+    private int chooseTest;
+    Bundle bundle = new Bundle();
 
     public MainFragment() {
         // Required empty public constructor
@@ -68,14 +71,20 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.test1:
+                chooseTest=1;
+                bundle.putInt("tag", chooseTest);
+                startTest.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new FirstTest())
+                        .replace(R.id.fragment_container, startTest)
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.randomTest:
+                chooseTest=2;
+                bundle.putInt("tag", chooseTest);
+                startTest.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new RandomTest())
+                        .replace(R.id.fragment_container, startTest)
                         .addToBackStack(null)
                         .commit();
                 break;

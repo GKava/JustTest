@@ -9,6 +9,8 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
+        android:textStyle="normal"
+        android:textSize="16sp"
         android:background="@drawable/button_background"
         android:id="@+id/test1"
         style="PrimaryFlatButton"
@@ -26,6 +28,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:textStyle="normal"
+        android:textSize="16sp"
         android:background="@drawable/button_background"
         android:id="@+id/randomTest"
         style="PrimaryFlatButton"
@@ -52,6 +56,9 @@
 
 
         <Button
+            android:textStyle="bold"
+            android:textColor="#DB0000"
+            android:textSize="16sp"
             android:background="@drawable/button_background"
             android:id="@+id/test4"
             style="PrimaryFlatButton"
@@ -61,13 +68,15 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="МЕМОПЕДИЯ"
+            android:text="HARD 100"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="322dp" />
 
         <Button
+            android:textStyle="normal"
+            android:textSize="16sp"
             android:background="@drawable/button_background"
             android:id="@+id/test3"
             style="PrimaryFlatButton"
@@ -81,7 +90,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="232dp" />
+            tools:layout_editor_absoluteY="322dp" />
 
     </LinearLayout>
 

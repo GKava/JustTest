@@ -32,11 +32,20 @@ public class RandomTest extends Fragment implements View.OnClickListener{
     private int point=0;
     private InterstitialAd mInterstitialAd;
     private String rating;
-    private  int f0;
-    private  int f1;
-    private  int f2;
-    private  int f3;
-    private  int f4;
+    private  int f0=0;
+    private  int f1=1;
+    private  int f2=2;
+    private  int f3=3;
+    private  int f4=4;
+    private  int f5=5;
+    private  int f6=6;
+    private  int f7=7;
+    private  int f8=8;
+    private  int f9=9;
+    private  int f10=10;
+    private  int f11=11;
+    private  int f12=12;
+    private  int f13=12;
     List<AllQuestions> allQuestions = getAllQuestions();
 
     public static final String APP_PREFERENCES_COINS= "coins";
@@ -80,16 +89,7 @@ public class RandomTest extends Fragment implements View.OnClickListener{
             this3.setOnClickListener(this);
             this4.setOnClickListener(this);
             imageView.setImageResource(R.drawable.mozg);
-
-             Random random = new Random();
-             int collSize = allQuestions.size();
-             Collections.shuffle(allQuestions);
-             f0=0;
-             f1=1;
-             f2=2;
-             f3=3;
-             f4=4;
-
+            Collections.shuffle(allQuestions);
             testQuestion();
             return view;
     }
@@ -110,14 +110,13 @@ public class RandomTest extends Fragment implements View.OnClickListener{
                 if (point==4 & allQuestions.get(f4).getWinInt()==answer ){
                     value++;
                 }
-
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.this1:
-                if (point==5){
+                if (point==11){
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, new  MainFragment())
                             .commit();
@@ -145,6 +144,7 @@ public class RandomTest extends Fragment implements View.OnClickListener{
                 point++;
                 testQuestion();
                 break;
+
         }
     }
     public void testQuestion(){
@@ -183,30 +183,89 @@ public class RandomTest extends Fragment implements View.OnClickListener{
             this3.setText(allQuestions.get(f4).getThis3());
             this4.setText(allQuestions.get(f4).getThis4());
         }
-
         if (point==5){
-            if (value==0){
+            question.setText(allQuestions.get(f5).getQuestionsName());
+            this1.setText(allQuestions.get(f5).getThis1());
+            this2.setText(allQuestions.get(f5).getThis2());
+            this3.setText(allQuestions.get(f5).getThis3());
+            this4.setText(allQuestions.get(f5).getThis4());
+        }
+        if (point==6){
+            question.setText(allQuestions.get(f6).getQuestionsName());
+            this1.setText(allQuestions.get(f6).getThis1());
+            this2.setText(allQuestions.get(f6).getThis2());
+            this3.setText(allQuestions.get(f6).getThis3());
+            this4.setText(allQuestions.get(f6).getThis4());
+        }
+        if (point==7){
+            question.setText(allQuestions.get(f7).getQuestionsName());
+            this1.setText(allQuestions.get(f7).getThis1());
+            this2.setText(allQuestions.get(f7).getThis2());
+            this3.setText(allQuestions.get(f7).getThis3());
+            this4.setText(allQuestions.get(f7).getThis4());
+        }
+        if (point==8){
+            question.setText(allQuestions.get(f8).getQuestionsName());
+            this1.setText(allQuestions.get(f8).getThis1());
+            this2.setText(allQuestions.get(f8).getThis2());
+            this3.setText(allQuestions.get(f8).getThis3());
+            this4.setText(allQuestions.get(f8).getThis4());
+        }
+        if (point==9){
+            question.setText(allQuestions.get(f9).getQuestionsName());
+            this1.setText(allQuestions.get(f9).getThis1());
+            this2.setText(allQuestions.get(f9).getThis2());
+            this3.setText(allQuestions.get(f9).getThis3());
+            this4.setText(allQuestions.get(f9).getThis4());
+        }
+      if (point==10){
+            question.setText(allQuestions.get(f10).getQuestionsName());
+            this1.setText(allQuestions.get(f10).getThis1());
+            this3.setText(allQuestions.get(f10).getThis3());
+            this4.setText(allQuestions.get(f10).getThis4());
+        }
+      /*    if (point==11){
+            question.setText(allQuestions.get(f11).getQuestionsName());
+            this1.setText(allQuestions.get(f11).getThis1());
+            this2.setText(allQuestions.get(f11).getThis2());
+            this3.setText(allQuestions.get(f11).getThis3());
+            this4.setText(allQuestions.get(f11).getThis4());
+        }
+        if (point==12){
+            question.setText(allQuestions.get(f12).getQuestionsName());
+            this1.setText(allQuestions.get(f12).getThis1());
+            this2.setText(allQuestions.get(f12).getThis2());
+            this3.setText(allQuestions.get(f12).getThis3());
+            this4.setText(allQuestions.get(f12).getThis4());
+        }
+        if (point==13){
+            question.setText(allQuestions.get(f13).getQuestionsName());
+            this1.setText(allQuestions.get(f13).getThis1());
+            this2.setText(allQuestions.get(f13).getThis2());
+            this3.setText(allQuestions.get(f13).getThis3());
+            this4.setText(allQuestions.get(f13).getThis4());
+        }
+        */
+
+        if (point==11){
+            if (value <= 5){
                 rating = "просто ухади";
+                coins=coins+1;
             }
-            if (value==1){
+            if (value >= 6 && value <= 10){
                 rating = "ну ты лох";
+                coins=coins+2;
             }
-            if (value==2){
+            if (value >= 11 && value <= 15){
                 rating = "средне";
-            }
-            if (value==3){
-                rating = "побольше среднего";
                 coins=coins+3;
             }
-            if (value==4){
-                rating = "ну так";
-                coins=coins+4;
-            }
-            if (value==5){
-                rating = "шаришь";
+            if (value >= 16 && value <= 20){
+                rating = "побольше среднего";
                 coins=coins+5;
+
             }
-            question.setText("Счет: "+value+"/5"+"\n"+ rating);
+            question.setText("Правильных ответов: "+value+" из 11"+"\n"+ rating);
             this1.setText("Вернуться в главное меню");
             this2.setVisibility(View.GONE);
             this3.setVisibility(View.GONE);

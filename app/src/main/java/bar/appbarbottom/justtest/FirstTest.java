@@ -1,6 +1,7 @@
 package bar.appbarbottom.justtest;
 
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -78,13 +79,36 @@ public class FirstTest extends Fragment implements View.OnClickListener {
         if (point==2 & allQuestions.get(2).getWinInt()==answer ){
             value++;
         }
-
-//        if (point==3 & allQuestions.get(3).getWinInt()==answer ){
-//            value++;
-//        }
-//        if (point==4 & allQuestions.get(4).getWinInt()==answer ){
-//            value++;
-//        }
+        if (point==3 & allQuestions.get(3).getWinInt()==answer ){
+            value++;
+        }
+        if (point==4 & allQuestions.get(4).getWinInt()==answer ){
+            value++;
+        }
+        if (point==5 & allQuestions.get(5).getWinInt()==answer ){
+            value++;
+        }
+        if (point==6 & allQuestions.get(6).getWinInt()==answer ){
+            value++;
+        }
+        if (point==7 & allQuestions.get(7).getWinInt()==answer ){
+            value++;
+        }
+        if (point==8 & allQuestions.get(8).getWinInt()==answer ){
+            value++;
+        }
+        if (point==9 & allQuestions.get(9).getWinInt()==answer ){
+            value++;
+        }
+        if (point==10 & allQuestions.get(10).getWinInt()==answer ){
+            value++;
+        }
+        if (point==11 & allQuestions.get(11).getWinInt()==answer ){
+            value++;
+        }
+        if (point==12 & allQuestions.get(12).getWinInt()==answer ){
+            value++;
+        }
 
     }
 
@@ -95,20 +119,17 @@ public class FirstTest extends Fragment implements View.OnClickListener {
             this3.setText(allQuestions.get(intPoint).getThis3());
             this4.setText(allQuestions.get(intPoint).getThis4());
 
-        if (point==3){
-            if (value==0){
-                rating = "просто ухади";
-            }
-            if (value==1){
+        if (point==12){
+            if  (value <= 5) {
                 rating = "ну ты лох";
             }
-            if (value==2){
+            if (value >= 6 && value <= 10){
                 rating = "средне";
             }
-            if (value==3){
+            if (value >= 11 && value <= 15){
                 rating = "шаришь";
             }
-            question.setText("Счет: "+value+"/3"+"\n"+ rating);
+            question.setText("Правильных ответов: "+value+" из 15"+"\n"+ rating);
             this1.setText("Вернуться в главное меню");
             this2.setVisibility(View.GONE);
             this3.setVisibility(View.GONE);
@@ -121,7 +142,7 @@ public class FirstTest extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.this1:
-                if (point==3){
+                if (point==12){
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, new  MainFragment())
                             .commit();

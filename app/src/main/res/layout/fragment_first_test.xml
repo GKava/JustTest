@@ -9,6 +9,8 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
+        android:textSize="18sp"
+        android:background="@drawable/button_background"
         android:id="@+id/this1"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -25,6 +27,8 @@
 
 
     <Button
+        android:textSize="18sp"
+        android:background="@drawable/button_background"
         android:id="@+id/this2"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -38,7 +42,10 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/this1" />
+
     <Button
+        android:textSize="18sp"
+        android:background="@drawable/button_background"
         android:id="@+id/this3"
         android:layout_width="0dp"
         android:layout_height="70dp"
@@ -54,6 +61,8 @@
         app:layout_constraintTop_toBottomOf="@+id/this2" />
 
     <Button
+        android:textSize="18sp"
+        android:background="@drawable/button_background"
         android:id="@+id/this4"
         android:layout_width="0dp"
         android:layout_height="70dp"
