@@ -254,15 +254,18 @@ public class RandomTest extends Fragment implements View.OnClickListener{
             }
             if (value >= 6 && value <= 10){
                 rating = "ну ты лох";
-                coins=coins+2;
             }
             if (value >= 11 && value <= 15){
                 rating = "средне";
-                coins=coins+3;
             }
-            if (value >= 16 && value <= 20){
+            if (value >= 17 && value <= 19){
                 rating = "побольше среднего";
-                coins=coins+5;
+                coins=coins+1;
+
+            }
+            if (value == 20){
+                rating = "побольше среднего";
+                coins=coins+3;
 
             }
             question.setText("Правильных ответов: "+value+" из 11"+"\n"+ rating);

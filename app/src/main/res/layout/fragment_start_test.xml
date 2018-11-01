@@ -39,8 +39,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCoins">
 
+        <TextView
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#f4f4f4"
+            android:id="@+id/header"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
+            android:layout_marginTop="20dp"
             android:id="@+id/start"
             android:layout_width="match_parent"
             android:layout_height="80dp"

@@ -28,7 +28,7 @@ import static bar.appbarbottom.justtest.MainFragment.APP_PREFERENCES_COINS;
     public class StartTest extends Fragment implements View.OnClickListener {
 
     SharedPreferences mSettings;
-    TextView txtCoins;
+    TextView txtCoins,header;
     Button start, back;
     ImageView helpView;
     private int coins;
@@ -64,9 +64,11 @@ import static bar.appbarbottom.justtest.MainFragment.APP_PREFERENCES_COINS;
         start = view.findViewById(R.id.start);
         back = view.findViewById(R.id.back);
         helpView = view.findViewById(R.id.helpView);
+        header = view.findViewById(R.id.header);
         helpView.setOnClickListener(this);
         start.setOnClickListener(this);
         back.setOnClickListener(this);
+
         mSettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         txtCoins = view.findViewById(R.id.txtCoins);
         Drawable img = getResources().getDrawable(R.drawable.ic_monetization_on_black_24dp);
@@ -77,6 +79,16 @@ import static bar.appbarbottom.justtest.MainFragment.APP_PREFERENCES_COINS;
         Bundle bundle = getArguments();
         if (bundle != null) {
             chooseTest = bundle.getInt("tag");
+        }
+
+        if (chooseTest==1){
+            header.setText("ТЕСТ МЕСЯЦА");
+        }
+        if (chooseTest==2){
+            header.setText("20 СЛУЧАЙНЫХ ВОПРОСОВ");
+        }
+        if (chooseTest==3){
+            header.setText("HARD ТЕСТ");
         }
 
         return view;
@@ -109,6 +121,16 @@ import static bar.appbarbottom.justtest.MainFragment.APP_PREFERENCES_COINS;
                                 .commit();
                     }
                 }
+                if (chooseTest == 2) {
+                    if (coins<5){
+                        showToast(5);
+                    } else {
+                        coins=coins-5;
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container, new HardTest())
+                                .commit();
+                    }
+                }
                 break;
             case R.id.back:
                 getActivity().getSupportFragmentManager().beginTransaction()
@@ -119,14 +141,17 @@ import static bar.appbarbottom.justtest.MainFragment.APP_PREFERENCES_COINS;
             case R.id.helpView:
                 if (chooseTest == 1) {
                 title= "Тест месяца";
-                content= "описание теста месяца";
+                content= "описание теста месяца.";
                 }
 
                 if (chooseTest == 2) {
                     title= "Рандомный тест";
-                    content= "описание рандомного теста ";
+                    content= "17-19 Правильных ответов +1 монета.\n20 Правильных ответов +3 монеты.";
                 }
-
+                if (chooseTest == 3) {
+                    title= "HARD тест";
+                    content= "100 вопросов, нет права на ошибку.";
+                }
                 createRateDialog(title, content);
                 break;
         }
